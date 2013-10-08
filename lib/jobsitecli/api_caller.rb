@@ -2,7 +2,7 @@ require 'rest-client'
 
 module Jobsitecli
   class ApiCaller
-    include ::Jobsitecli::Routes
+    include Jobsitecli::Routes
 
     attr_accessor :max_connection_attempts
     attr_reader :endpoint, :options, :connection_attempts
@@ -17,7 +17,7 @@ module Jobsitecli
 
     def call(obj)
       method, url = send("#{endpoint}_endpoint", options[:url_options] || {})
-      Jobsitecli.debug("API CALL: #{method} #{url}")
+      #Jobsitecli.debug("API CALL: #{method} #{url}")
       
       while connection_attempts < max_connection_attempts
         sleep_if_retrying
@@ -26,7 +26,7 @@ module Jobsitecli
         valid_response_codes = (200..207).to_a
         if valid_response_codes.include?(response.code.to_i)
           if options[:success]
-            Jobsitecli.debug("CALLING SUCCESS HANDLER: #{options[:success]}")
+            #Jobsitecli.debug("CALLING SUCCESS HANDLER: #{options[:success]}")
             obj.send(options[:success], response)
           end
           success = true
@@ -44,7 +44,7 @@ module Jobsitecli
     def make_call(method, url)
       begin
         @connection_attempts += 1
-        Jobsitecli.debug("ATTEMPT #{@connection_attempts}")
+        #Jobsitecli.debug("ATTEMPT #{@connection_attempts}")
         headers =  {
           "AUTHORIZATION" => "Token token=\"#{Jobsitecli.configuration.token}\""
         }
@@ -71,7 +71,7 @@ module Jobsitecli
     def sleep_if_retrying
       if @connection_attempts > 0
         time = @connection_attempts * 5
-        Jobsitecli.debug("Sleeping for #{time} before retrying")
+        #Jobsitecli.debug("Sleeping for #{time} before retrying")
         sleep time
       end
     end
