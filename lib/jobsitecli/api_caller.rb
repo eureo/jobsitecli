@@ -49,9 +49,9 @@ module Jobsitecli
           "AUTHORIZATION" => "Token token=\"#{Jobsitecli.configuration.token}\""
         }
         parameters = {
-          url: url,
-          method: method,
-          headers: headers
+          :url => url,
+          :method => method,
+          :headers => headers
         }
         parameters[:payload] = options[:payload] if method == :post or method == :put
         RestClient::Request.execute(parameters)

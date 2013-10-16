@@ -15,7 +15,7 @@ module Jobsitecli
 
     def defaults
       defaults = {
-        host: 'conexion-empleo.com'
+        :host => 'conexion-empleo.com'
       }
       #defaults[:logger] = Logger.new(STDOUT)
     end

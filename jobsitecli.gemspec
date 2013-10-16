@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'jobsitecli/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "cvtcli"
+  gem.name          = "jobsitecli"
   gem.version       = Jobsitecli::VERSION
   gem.authors       = ["Franck D'agostini"]
   gem.email         = ["franck.dagostini@gmail.com"]
