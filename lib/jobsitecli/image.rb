@@ -9,7 +9,7 @@ module Jobsitecli
     end
 
     def create(params)
-      #Jobsitecli.debug("PARAMS : #{params}")
+      Jobsitecli.debug("PARAMS : #{params}")
       api_call :create_image, :url_options => { :query => { :oldid => params[:image][:oldid] }}, :payload  => params, :failure => :handle_failure, :success => :handle_success
     end
 
@@ -18,7 +18,7 @@ module Jobsitecli
     end
 
     def handle_failure(response)
-      #Jobsitecli.debug("API CALL FAILED : #{response}")
+      Jobsitecli.debug("API CALL FAILED : #{response}")
       @responses << response
     end
 

@@ -6,6 +6,7 @@ module Jobsitecli
     attr_accessor :secure
     attr_accessor :token
     attr_accessor :logger
+    attr_accessor :debug
 
     def initialize
       defaults.each do |setting, value|
