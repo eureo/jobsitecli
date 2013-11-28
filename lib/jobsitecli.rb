@@ -23,7 +23,7 @@ module Jobsitecli
     end
 
     def debug(message)
-      return unless configuration.debug
+      return unless configuration && configuration.debug
       if logger
         logger.debug(LOG_PREFIX + message)
       else
