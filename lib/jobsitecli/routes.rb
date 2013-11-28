@@ -1,6 +1,26 @@
 module Jobsitecli
   module Routes
 
+    def create_page_endpoint(options)
+      [:post, create_page_url(options)]
+    end
+
+    def create_page_url(options)
+      url = http_scheme.build(base_options.merge(:path => create_page_path))
+      url.query = options[:query].map { |k,v| "#{k}=#{v}" }.join('&') if options[:query]
+      url.to_s
+    end
+
+    def delete_page_endpoint(options)
+      [:delete, delete_page_url(options)]
+    end
+
+    def delete_page_url(options)
+      url = http_scheme.build(base_options.merge(:path => delete_page_path(options[:id])))
+      url.query = options[:query].map { |k,v| "#{k}=#{v}" }.join('&') if options[:query]
+      url.to_s
+    end
+
     def create_image_endpoint(options)
       [:post, create_image_url(options)]
     end
@@ -54,6 +74,16 @@ module Jobsitecli
     def base_options
       options = { :host => Jobsitecli.configuration.host, :port => Jobsitecli.configuration.port.to_i }
       options
+    end
+
+    def create_page_path
+      path = "/api/v1/pages"
+      path
+    end
+
+    def delete_page_path(id)
+      path = "/api/v1/pages/#{id}"
+      path
     end
 
     def create_image_path

@@ -3,6 +3,7 @@ require "jobsitecli/configuration"
 require "jobsitecli/routes"
 require "jobsitecli/api_caller"
 require "jobsitecli/api_call"
+require 'jobsitecli/page'
 require 'jobsitecli/image'
 require 'jobsitecli/doc'
 

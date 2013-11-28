@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jobsitecli (0.0.2)
+    jobsitecli (0.0.3)
       rest-client
 
 GEM
