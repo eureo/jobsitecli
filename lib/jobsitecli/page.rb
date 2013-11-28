@@ -17,17 +17,5 @@ module Jobsitecli
       api_call :delete_page, :url_options => { :id => old_id }, :failure => :handle_failure
     end
 
-    def handle_failure(response)
-      Jobsitecli.debug("API CALL FAILED : #{response}")
-      @responses << response
-    end
-
-    def handle_success(response)
-      @responses << response
-    end            
-
-    def last_response
-      @responses.last
-    end
   end
 end
